@@ -8,7 +8,6 @@ public class Polynomial implements Cloneable{
     
     /**
 		Default constructor that creates a polynomial of 0.
-		@param none
     */
     public Polynomial(){
         poly = new double[]{0};
@@ -117,7 +116,6 @@ public class Polynomial implements Cloneable{
 
     /**
 		Overrides the default <code>toString</code> method to return the polynomial expression from the array.
-		@param none
     */
     public String toString(){
     	String expression = "";
@@ -209,6 +207,9 @@ public class Polynomial implements Cloneable{
 
     /**
 		Testing the Polynomial class methods.
+		@param args
+			Unused.
+
     */
     public static void main(String[] args){
     	Polynomial f1 = new Polynomial();
