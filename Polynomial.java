@@ -209,7 +209,6 @@ public class Polynomial implements Cloneable{
 		Testing the Polynomial class methods.
 		@param args
 			Unused.
-
     */
     public static void main(String[] args){
     	Polynomial f1 = new Polynomial();
@@ -229,7 +228,7 @@ public class Polynomial implements Cloneable{
     	System.out.println(' ');
 
     	Polynomial f3 = new Polynomial(f2);
-    	System.out.println("Createf3(x) by copying f2(x) = " + f3);
+    	System.out.println("Create f3(x) by copying f2(x) = " + f3);
     	f3.add_to_coef(4, 1);
     	System.out.println("Add 4 to x^1 of f3(x) = " + f3);
 
