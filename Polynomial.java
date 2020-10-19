@@ -3,7 +3,7 @@
 	
 	@author Cameron Wickersham
 */
-public class Polynomial implements Cloneable{
+public class Polynomial{
     private double[] poly;
     
     /**
@@ -96,22 +96,11 @@ public class Polynomial implements Cloneable{
 			a double that is calculated from the polynomial
     */
     public double eval(double x){
-    	double ans = 0;
-    	for(int i = 0; i < poly.length; i++){
-    		double expoAns = 1;
-
-    		if(i != 0){
-    			// calculating x^i first
-	    		for(int j = 1; j <= i; j++)
-	    			expoAns *= x;	
-	    		// coef + x^i
-    			ans += poly[i] * expoAns;
-    		}
-    		// skips exponent calculation if x^0
-    		else
-    			ans += poly[i];
-    	}
-    	return ans;
+        // using Honer's Rule to evaluate the polynomial 
+        double ans = 0;
+        for(int i = poly.length - 1; i >= 0; i--)
+            ans = poly[i] + (x * ans);
+        return ans;
     }
 
     /**
@@ -196,7 +185,7 @@ public class Polynomial implements Cloneable{
     			product[i + j] += poly[i] * p.poly[j];
     	}
 
-    	// create new polynomial object and return
+    	// create new polynomial object and return 
     	Polynomial new_obj	= new Polynomial(product[0]);
 
     	for(int i = 0; i < product.length; i++)
@@ -247,7 +236,7 @@ public class Polynomial implements Cloneable{
 
     	System.out.println(' ');
 
-    	System.out.println(f3);
+    	System.out.println("f3(x) = " + f3);
     	System.out.println("f3(3) = " + f3.eval(3));
 
     	System.out.println(' ');
@@ -266,14 +255,28 @@ public class Polynomial implements Cloneable{
     	Polynomial f4 = new Polynomial(f2);
     	f4.add_to_coef(3, 4);
     	f4.assign_coef(20, 2);
-    	System.out.println("f4(x) = " + f4.add(f1));
+        System.out.println("f4+f1(2) = " + f4.add(f1).eval(2));
 
     	System.out.println(' ');
+
+        Polynomial f5 = new Polynomial(f2);
+        System.out.println("f5 created from f2: " + f5);
+        f5.add_to_coef(2, 6);
+        System.out.println("Add 3 to x^4: " + f5);
+        f5.assign_coef(12, 1);
+        System.out.println("Assign 20 to x^2: " + f5);
+        System.out.println("f5(3) = " + f5.add(f1).eval(3));
+        System.out.println("f5 * f4 = " + f5.multiply(f4));
+
+        System.out.println(' ');
 
     	System.out.println("All polynomials:");
     	System.out.println("f1(x) = " + f1);
     	System.out.println("f2(x) = " + f2);
     	System.out.println("f3(x) = " + f3);
     	System.out.println("f4(x) = " + f4);
+        System.out.println("f5(x) = " + f5);
     }
 }
+
+
