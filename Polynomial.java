@@ -114,27 +114,31 @@ public class Polynomial{
     		return expression + "0";
     	else {
 	    	// finding first non-zero element -> allows me to skip unnecessary indexes
-	    	int first_expo = -1;
+	    	int highestDeg = -1;
 	    	for(int i = poly.length - 1; i >= 0; i--)
 	    		if(poly[i] != 0){
-	    			first_expo = i;
+	    			highestDeg = i;
 	    			break;
 	    		}
 
-	    	// adding the coefficients and exponents to the string as long as the polynomial actually has x^k
-	    	if(first_expo != 0){
+	    	// adding the coefficients and exponents to the string as long as the polynomial actually has x^i
+	    	if(highestDeg != 0){
                 // Using the fencepost problem/solution to print out the string
-	    		if (poly[first_expo] != 1)
-	    			expression += poly[first_expo] + "x^" + first_expo;
-	    		else if (poly[first_expo] == 1)
-	    			expression += "x^" + first_expo;
+                if(highestDeg == 1)
+                    expression += poly[highestDeg] + "x";
+                else if(highestDeg != 0 && poly[highestDeg] != 1)
+                    expression += poly[highestDeg] + "x^" + highestDeg;
+                else
+                    expression += "x^" + highestDeg;  
 
-		    	for(int i = first_expo - 1; i >= 0; i--){
+		    	for(int i = highestDeg - 1; i >= 0; i--){
 		    		// skips elements that equal 0
 		    		if(poly[i] == 0) 
 		    			continue;
 
-		    		if(i != 0 && poly[i] != 1)
+                    if(i == 1)
+                        expression += " + " + poly[i] + "x";
+		    		else if(i != 0 && poly[i] != 1)
 		    			expression += " + " + poly[i] + "x^" + i;
 		    		else if(i != 0 && poly[i] == 1)
 		    			expression += " + " + "x^" + i;
