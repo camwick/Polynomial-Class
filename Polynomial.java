@@ -113,7 +113,7 @@ public class Polynomial{
     	if (poly.length == 1 && poly[0] == 0)
     		return expression + "0";
     	else {
-	    	// finding first non-zero element
+	    	// finding first non-zero element -> allows me to skip unnecessary indexes
 	    	int first_expo = -1;
 	    	for(int i = poly.length - 1; i >= 0; i--)
 	    		if(poly[i] != 0){
@@ -123,6 +123,7 @@ public class Polynomial{
 
 	    	// adding the coefficients and exponents to the string as long as the polynomial actually has x^k
 	    	if(first_expo != 0){
+                // Using the fencepost problem/solution to print out the string
 	    		if (poly[first_expo] != 1)
 	    			expression += poly[first_expo] + "x^" + first_expo;
 	    		else if (poly[first_expo] == 1)
