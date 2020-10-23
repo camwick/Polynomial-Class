@@ -109,7 +109,7 @@ public class Polynomial{
     public String toString(){
     	String expression = "";
 
-    	// checks if polynomial is empty
+    	// checks if polynomial is empty (only 1 elemen that equals 0 (made with default constructor))
     	if (poly.length == 1 && poly[0] == 0)
     		return expression + "0";
     	else {
@@ -120,6 +120,8 @@ public class Polynomial{
 	    			highestDeg = i;
 	    			break;
 	    		}
+            if(highestDeg == -1)
+                highestDeg = 0;
 
 	    	// adding the coefficients and exponents to the string as long as the polynomial actually has x^i
 	    	if(highestDeg != 0){
