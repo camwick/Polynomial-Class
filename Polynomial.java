@@ -42,7 +42,7 @@ public class Polynomial{
 			The exponent referencing which coefficient the amount should be added to. 
     */
     public void add_to_coef(double amount, int exponent){
-    	if(poly.length - 1 < exponent){
+        if(poly.length - 1 < exponent){
     		double[] new_obj = new double[exponent + 5];
 
     		for(int i = 0; i < poly.length; i++)
@@ -109,7 +109,7 @@ public class Polynomial{
     public String toString(){
     	String expression = "";
 
-    	// checks if polynomial is empty (only 1 elemen that equals 0 (made with default constructor))
+    	// checks if polynomial is empty (only 1 element that equals 0 (made with default constructor))
     	if (poly.length == 1 && poly[0] == 0)
     		return expression + "0";
     	else {
@@ -193,7 +193,7 @@ public class Polynomial{
     	}
 
     	// create new polynomial object and return 
-    	Polynomial new_obj	= new Polynomial(product[0]);
+    	Polynomial new_obj = new Polynomial(product[0]);
 
     	for(int i = 0; i < product.length; i++)
     		new_obj.assign_coef(product[i], i);
@@ -270,7 +270,7 @@ public class Polynomial{
         System.out.println("f5 created from f2: " + f5);
         f5.add_to_coef(2, 6);
         System.out.println("Add 3 to x^4: " + f5);
-        f5.assign_coef(12, 1);
+        f5.assign_coef(-12, 1);
         System.out.println("Assign 20 to x^2: " + f5);
         System.out.println("f5(3) = " + f5.add(f1).eval(3));
         System.out.println("f5 * f4 = " + f5.multiply(f4));
@@ -285,5 +285,3 @@ public class Polynomial{
         System.out.println("f5(x) = " + f5);
     }
 }
-
-
